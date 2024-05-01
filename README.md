@@ -15,3 +15,4 @@ It is my first project using this framework.
 9. Implement a list of tasks with numbering;
 10. Style the application;
 
+![IMG_1803](https://github.com/DeborahLyra/To-Do-List-React-Native/assets/112579301/f03d0a27-6825-4705-9840-b7a24569407b)
