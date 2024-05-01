@@ -20,7 +20,7 @@ export default function ItemList(props) {
 
 const styles = StyleSheet.create({
     listContainer: {
-        height: 55,
+        height: 50,
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent:'space-between',

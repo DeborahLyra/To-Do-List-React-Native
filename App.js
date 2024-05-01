@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, SafeAreaView, Text, View, TextInput, TouchableOpacity, ScrollView } from 'react-native';
+import { StyleSheet, SafeAreaView, Text, View, TextInput, TouchableOpacity, ScrollView, FlatList } from 'react-native';
 import ItemList from './components/ItemList';
 
 export default function App() {
@@ -22,29 +22,30 @@ export default function App() {
 
   return (
     <SafeAreaView style={styles.container}>
-
-      <View style={styles.tasksWrapper}>
-        <Text style={styles.title}>To Do List</Text>
-        <TextInput
-          style={styles.input}
-          placeholder='What need to be done?'
-          value={task}
-          onChangeText={text => setTask(text)}
-        />
-        <TouchableOpacity
-          style={styles.addButton}
-          onPress={() => handleAddList()}
-        >
-          <Text style={styles.addText}><Text>Add Task</Text></Text>
-        </TouchableOpacity>
-        <ScrollView style={styles.items}>
-          {
-            taskList.map((item, index) => {
-              return <ItemList textItem={item} key={index} index={index} onDelete={() => handleRemoveTask(index)} />
-            })
-          }
-        </ScrollView>
-      </View>
+      <ScrollView>
+        <View style={styles.tasksWrapper}>
+          <Text style={styles.title}>To Do List</Text>
+          <TextInput
+            style={styles.input}
+            placeholder='What need to be done?'
+            value={task}
+            onChangeText={text => setTask(text)}
+          />
+          <TouchableOpacity
+            style={styles.addButton}
+            onPress={() => handleAddList()}
+          >
+            <Text style={styles.addText}><Text>Add Task</Text></Text>
+          </TouchableOpacity>
+          <View style={styles.items}>
+            {
+              taskList.map((item, index) => {
+                return <ItemList textItem={item} key={index} index={index} onDelete={() => handleRemoveTask(index)} />
+              })
+            }
+          </View>
+        </View>
+      </ScrollView>
     </SafeAreaView>
   );
 }
@@ -58,7 +59,6 @@ const styles = StyleSheet.create({
   tasksWrapper: {
     paddingTop: 50,
     paddingHorizontal: 20,
-
   },
   title: {
     fontSize: 30,
@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
   },
 
   items: {
-
+    flexGrow: 1,
   },
   input: {
     height: 50,
