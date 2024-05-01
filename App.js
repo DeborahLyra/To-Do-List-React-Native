@@ -8,16 +8,18 @@ export default function App() {
   const [taskList, setTaskList] = useState([])
 
   const handleAddList = () => {
-    if (task !== '') {
-      setTaskList([...taskList, task])
-      setTask(null)
+    if (task === undefined || task.trim() === '') {
+      return
     }
-  }
+
+    setTaskList([...taskList, task]);
+    setTask('');
+  };
   const handleRemoveTask = (index) => {
     setTaskList(taskList.filter((_, i) => i !== index));
   };
-  
-  
+
+
   return (
     <SafeAreaView style={styles.container}>
 
@@ -38,7 +40,7 @@ export default function App() {
         <ScrollView style={styles.items}>
           {
             taskList.map((item, index) => {
-              return <ItemList textItem={item} key={item} index={index} onDelete={()=>handleRemoveTask(index)}/>
+              return <ItemList textItem={item} key={index} index={index} onDelete={() => handleRemoveTask(index)} />
             })
           }
         </ScrollView>
